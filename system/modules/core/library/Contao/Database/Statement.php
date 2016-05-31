@@ -326,7 +326,7 @@ abstract class Statement
 		$this->strQuery = preg_replace('/(?<!%)%([^bcdufosxX%])/', '%%$1', $this->strQuery);
 
 		// Replace wildcards
-		if (($this->strQuery = @vsprintf($this->strQuery, $arrValues)) == false)
+		if (count($arrValues) && ($this->strQuery = @vsprintf($this->strQuery, $arrValues)) == false)
 		{
 			throw new \Exception('Too few arguments to build the query string');
 		}
